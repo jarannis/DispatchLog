@@ -22,7 +22,7 @@ var xmlHttp = createXmlHttpRequestObject();
 function createXmlHttpRequestObject()
 {
     // will store the reference to the XMLHttpRequestObject
-    var xmlHttp;
+    
     // if running Internet Explorer
     if(window.ActiveXObject)
     {
@@ -62,7 +62,7 @@ function process()
     if (xmlHttp.readyState == 4 || xmlhttp.readyState == 0)
     {
         // retrieve the name typed by the user on the form
-        name = ecodeURIComponent(document.getElementByID("myName").value);
+        name = encodeURIComponent(document.getElementByID("myName").value);
         //execute the quickstart.php page from the server
         xmlHttp.open("GET", "quickstart.php?name=" + name, true);
         //define the method to handle server responses
