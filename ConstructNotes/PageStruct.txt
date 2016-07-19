@@ -1,0 +1,40 @@
+index.php = cookie check
+
+If cookie = valid user, logged in
+   -> Show Menu
+        If Permission = Dispatcher, Manager
+         - Linkbutton -> "Dispatch Dashboard" > dispatch.php
+        If Permission = Guest Relations, Manager, Supervisor
+         - Linkbutton -> "Today's Incidents" > incidents.php?today
+        If Permission = Manager, Supervisor, Dispatch
+         - Linkbutton -> "Outstanding Incidents"
+        If Permission = Guest Relations, Manager, Supervisor
+         - Linkbutton -> "Enter Comment" > /comments/enter.php
+        If Permission = Guest Relations, Manager, Supervisor
+         - Linkbutton -> "View Comments" > /comments/list.php
+        If Permission = Manager, Supervisor
+         - Linkbutton -> "Search Comments" > /comments/search.php
+        If Permission = Admin, IT
+         - Linkbutton -> "Settings and Configuration" > /config/adminMenu.php
+        
+
+dispatch.php
+
+If cookie = valid user, logged in, is Dispatcher or Manager
+Frame (CreateIncident.php)    
+    Add From:
+        [Call(100)] [Emergent Call (222)] [Radio Traffic]
+    CreateIncident.php?from=call100 , call222, radio
+        Type: [Downtime] [First Aid] [Security] [Operational]
+            [Downtime]
+                Logic Captures TimeStamp
+                Logic Captures Source (call100, 222, radio)
+                Location Drop-down (Rides List, by Area)
+                Radio "Type":
+                ()Occupied Non-Functional , ()Unoccupied Non-Functional
+                Radio "Reason":
+                ()Mechanical , ()Operational, ()Weather, ()Injury
+                Radio "Reporting Party":
+                ()Operator(default if 100, 222) ()Ops(if Radio, enables Callsign Entry)
+                ()Maintenance(if Radio, enables Callsign Entry), ()Other (OtherBox)
+                

@@ -1,0 +1,32 @@
+Comments
+
+Guests
+
+Employees
+
+Areas
+
+Incidents
++ Downtimes
+    - Signal 2A Time (not required)
+    - Signal 25 Time (not required)
+    - Signal 2 Time (required)
+    - Signal 4 Time (Not Required)
+    - Maintenance On-Site Time
+    - Ops On-Site Time
+    - Maintenance Clear Number (most senior, not required)
+    - Ops Clear Number (most senior, not required)
+    > Ride
+    > Reporting Party
+        - Operator
+        - Supervisor
+    > Incident
+    + Downtime Type
+        Weather
+        Operational
+        Injury
+        Mechanical
++ First Aid
++ Security
++ Comment
+
