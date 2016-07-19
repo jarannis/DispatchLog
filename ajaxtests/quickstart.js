@@ -60,7 +60,7 @@ function createXmlHttpRequestObject()
 function process()
 {
     // proceed only if the xmlHttp object isn't busy
-    if (xmlHttp.readyState == 4 || xmlhttp.readyState == 0)
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0)
     {
         // retrieve the name typed by the user on the form
         name = encodeURIComponent(document.getElementByID("myName").value);
