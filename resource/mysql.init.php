@@ -22,3 +22,4 @@ mysqli_connect(
         $_mysqlUsername,
         $_mysqlPassword,
         $_mysqlDatabase);
+?>
