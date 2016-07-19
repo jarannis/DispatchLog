@@ -17,9 +17,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-mysqli_connect(
+$link = mysqli_connect(
         $_mysqlServer,
         $_mysqlUsername,
         $_mysqlPassword,
         $_mysqlDatabase);
+
+if (!$link) {
+        echo "Error: Unable to connect to MySQL." . php_eol;
+        echo "Debugging errno: " . mysqli_connect_errno() . php_eol;
+        echo "Debugging error: " . mysqli_connect_error() . php_eol;
+}
 ?>
