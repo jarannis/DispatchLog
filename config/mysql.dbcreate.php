@@ -17,4 +17,5 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-echo getcwd();
+define('WORKINGDIR', str_replace('/config', '', get_cwd())); 
+include_once WORKINGDIR . "/resource/mysql.init.php";

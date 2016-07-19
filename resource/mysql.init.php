@@ -18,7 +18,8 @@
  */
 
 define('WORKINGDIR', str_replace('/config', '', get_cwd())); 
-require_once WORKINGDIR . "/config/mysql.conf.php";
+include_once WORKINGDIR . "/resource/mysql.conf.php";
+
 echo getcwd() . "\n";
 
 $link = mysqli_connect(
