@@ -37,4 +37,4 @@ Frame (CreateIncident.php)
                 Radio "Reporting Party":
                 ()Operator(default if 100, 222) ()Ops(if Radio, enables Callsign Entry)
                 ()Maintenance(if Radio, enables Callsign Entry), ()Other (OtherBox)
-                
+
