@@ -27,6 +27,7 @@ echo '<response>';
 // retrieve the user name
 $name = $_GET['name'];
 
+
 // generate the output depending on the user name received from client
 $userNames = array('CHRISTIAN', 'BOGDAN', 'FILIP', 'MIHAI', 'YODA');
 if (in_array(strtoupper($name), $userNames))
