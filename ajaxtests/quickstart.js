@@ -52,6 +52,7 @@ function createXmlHttpRequestObject()
     if (!xmlHttp)
         alert("Error creating the XMLHttpRequest object.");
     else
+        alert("Created XMLHttpRequest Object");
         return xmlHttp;
 }
 
