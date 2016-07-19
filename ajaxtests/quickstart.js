@@ -92,7 +92,7 @@ function handleServerResponse()
             // the documen element
             helloMessage = xmlDocumentElement.firstChild.data;
             // update the client display using the data received from the server
-            document.getElementByID("divMessage").innerHTML = '<i>' + helloMessage + '</i>';
+            document.getElementById("divMessage").innerHTML = '<i>' + helloMessage + '</i>';
             // restart sequence
             setTimeout('process()', 1000);
         }
