@@ -16,7 +16,18 @@ Incidents
     - Ops On-Site Time
     - Maintenance Clear Number (most senior, not required)
     - Ops Clear Number (most senior, not required)
-    > Ride
+    > Ride Location Type
+        - Waterpark
+        - Hard Park
+    > Ride Specific Location
+    > Ride Vehicle Location Types (by Ride) (Radio if single unit, checkboxes if multiple)
+        [] Station (All, Default)
+        [] Valley
+        [] Trim Brakes
+        [] In the Air
+        [] On the Ground
+        [] Deck
+        [] Base of Elevator
     > Reporting Party
         - Operator
         - Supervisor
@@ -26,7 +37,125 @@ Incidents
         Operational
         Injury
         Mechanical
+    - Notes
+
 + First Aid
+    > Symptom Type
+        - Sickness
+        - Heat
+        - Head
+        - Unconscious
+        - Bleeding
+        - Bee Sting
+        - Injury
+    > Reporting Party
+        Phone (Extension)
+        Radio (Callsign)
+    > Call Received Time (from TimeStamp)
+    > Call Location Type
+    > Call Location Specific
+    > Call Location Specific Notes
+    > Call Dispatched Time (from Button)
+    > Unit Responding
+    > Unit 10-97 Time
+    > Transport Time
+    > Signal 50 Called Time
+    > Signal 50 Arrived Time
+    > Time Resolved (Code 4)
+    - Notes
+
 + Security
+    > Report Type
+        - Theft (Guest to Guest)
+        - Theft (From the Park)
+        - Altercation (Verbal)
+        - Altercation (Physical)
+        - Lost Child
+        - Disturbance
+        - Line Jumper
+        - Fence Jumper (Ride)
+        - Fence Jumper (Park)
+    > Report Location Type
+    > Report Location Specific
+    - Call Received Time (From TimeStamp)
+    - Call Dispatched Time (From TimeStamp)
+    - Unit Responding
+    - Unit 10-97 time
+    - Description of Involved Person
+    - Disposition
+        - No Contact
+        - Contact Card
+        - Child Reunited
+        - Removed from Property
+        - Trespassed
+    - Time Code 4 from Button Press
+
 + Comment
+    > Interaction Type
+        - Concern
+        - Compliment
+        - Admission Policy
+    > Involved Departments
+        - Aquatics
+        - Food
+        - Front Gate
+        - Games
+        - Maintenance
+        - Park Services
+        - Retail
+        - Rides
+        - Safety
+    > Interaction Subject Location Type
+    > Interaction Subject Location Specific
+    > Involved Team Members
+        - Drop-Down for Department
+        - Drop-Down Text-Box w/ "add" button
+    > Complaint Notes
+    > Guest Name
+        - Drop-Down with Zip-Codes search
+    = Frame showing Guest Details, Contact Phone #, Photo?
+        = Nested Frame showing Previously Comped Items
+    > Interaction Source
+        - Walk-In
+        - Online
+            - Drop-down for Online Comment Source
+        - Phone
+    [] Rep Interaction Required
+    > Representative Notified
+    > Representative Notes
+    > Resolution Type
+        - Return Ticket
+            - Count of Tickets Issued
+        - Refund
+            - Refund Amount
+        - Meal Deal
+            - Count of Meal Deals issued
+        - Rapid Rides
+            - Rapid Ride Type
+            - Number Issued
+        - None Needed
+    
++ Location
+    - LocationID
+    - Location Type ID
+    - Location Name
+    - Location Unit Count
+
++ Location Types
+    - LocationTypeID
+    - Game
+    - Food Stand
+    - Front Gate
+    - Ride
+    - Slide / Pool
+    - Bathroom
+    - General
+    - Vendor Booth / Machine
+    - Store
+    - Web
+
++ Ride Vehicle Location Types
+    - VehLocID
+    - LinkedLocID
+    - Location
 
