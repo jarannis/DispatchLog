@@ -63,7 +63,7 @@ function process()
     if (xmlHttp.readyState == 4 || xmlHttp.readyState == 0)
     {
         // retrieve the name typed by the user on the form
-        name = encodeURIComponent(document.getElementByID("myName").value);
+        name = encodeURIComponent(document.getElementById("myName").value);
         //execute the quickstart.php page from the server
         xmlHttp.open("GET", "quickstart.php?name=" + name, true);
         //define the method to handle server responses
