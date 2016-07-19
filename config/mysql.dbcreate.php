@@ -16,18 +16,5 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-require_once getcwd() . "/config/mysql.conf.php";
-echo getcwd() . "\n";
 
-$link = mysqli_connect(
-        $_mysqlServer,
-        $_mysqlUsername,
-        $_mysqlPassword,
-        $_mysqlDatabase);
-
-if (!$link) {
-        echo "Error: Unable to connect to MySQL. \n";
-        echo "Debugging errno: " . mysqli_connect_errno() . "\n";
-        echo "Debugging error: " . mysqli_connect_error() . "\n";
-}
-?>
+echo getcwd();
