@@ -1,4 +1,3 @@
 <?php
-echo getcwd() . "\n";
-//require('./resource/mysql.init.php');
+require('./resource/mysql.init.php');
 ?>
