@@ -18,7 +18,7 @@
  */
 
 define('WORKINGDIR', str_replace('/config', '', getcwd())); 
-include_once WORKINGDIR . "/resource/mysql.conf.php";
+include_once WORKINGDIR . "/config/mysql.conf.php";
 
 echo getcwd() . "\n";
 
