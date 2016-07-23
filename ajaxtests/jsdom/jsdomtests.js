@@ -30,7 +30,7 @@ function process()
     oLiBlack.appendChild(oBlack);
     
     // create the second <li> element and add a text node to it
-    oLiOrange = documet.createElement("li");
+    oLiOrange = document.createElement("li");
     oOrange = document.createTextNode("Orange");
     oLiOrange.appendChild(oOrange);
     
