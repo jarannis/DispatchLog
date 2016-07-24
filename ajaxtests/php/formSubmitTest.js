@@ -83,6 +83,23 @@ function process(){
     }
 }
 
+function handleRequestStateChange(){
+    // when readyState is 4, ready to read server response
+    if (xmlHttp.readyState == 4){
+       if (xmlHttp.status == 200){
+           try{
+               handleServerResponse();
+           }
+           catch(e){
+               alert("Error reading the response: " + e.toString());
+           }
+       }
+       else{
+           alert("There was a problem retrieving the data: " + xmlHttp.statusText);
+       }
+    }
+}
+
 function handleServerResponse(){
     // retrieve xmlDOM
     var xmlResponse = xmlHttp.responseXML;
