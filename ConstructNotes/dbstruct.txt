@@ -159,3 +159,14 @@ Incidents
     - LinkedLocID
     - Location
 
++ Users
+    - UserID
+    - User Name
+    - User HashedPass
+    - User AccessLevel
++ Access Levels
+    - id
+    - canDispatch
+    - can Correct
+    - can look up guest
+    - 
