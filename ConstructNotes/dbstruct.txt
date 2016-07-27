@@ -166,7 +166,6 @@ Incidents
     - User AccessLevel
 + Access Levels
     - id
-    - canDispatch
-    - can Correct
-    - can look up guest
-    - 
+    - name
+    - rightsList (cs)
+        
