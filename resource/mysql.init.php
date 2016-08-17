@@ -21,6 +21,7 @@ define('WORKINGDIR', str_replace('/config', '', getcwd()));
 include_once WORKINGDIR . "/config/mysql.conf.php";
 
 echo getcwd() . "\n";
+echo WORKINGDIR . "\n";
 
 $link = mysqli_connect(
         $_mysqlServer,
@@ -33,4 +34,5 @@ if (!$link) {
         echo "Debugging errno: " . mysqli_connect_errno() . "\n";
         echo "Debugging error: " . mysqli_connect_error() . "\n";
 }
+else echo "Link Established \n";
 ?>

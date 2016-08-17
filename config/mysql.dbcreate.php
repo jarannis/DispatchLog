@@ -38,7 +38,7 @@ $createQuery = "CREATE TABLE downtimes ("
     ."downtimeType VARCHAR(12),"
     ."notes VARCHAR(640),"
     . "PRIMARY KEY (dtID))";
-mysqli_query($createQuery);
+mysqli_query($link, $createQuery);
 
 $createQuery = "CREATE TABLE firstAidLog ("
         . "firstAidID INT NOT NULL AUTO_INCREMENT,"
@@ -57,7 +57,7 @@ $createQuery = "CREATE TABLE firstAidLog ("
         . "timeCode4 DATETIME,"
         . "notes VARCHAR(640)"
         . "PRIMARY KEY (firstAidID))";
-mysqli_query($createQuery);
+mysqli_query($link, $createQuery);
 
 $createQuery = "CREATE TABLE securityLog ("
         . "secID INT NOT NULL AUTO_INCREMENT,"
@@ -72,7 +72,7 @@ $createQuery = "CREATE TABLE securityLog ("
         . "disposition VARCHAR(64),"
         . "timeCode4 DATETIME,"
         . "PRIMARY KEY (secID))";
-mysqli_query($createQuery);
+mysqli_query($link, $createQuery);
 
 $createQuery = "CREATE TABLE commentLog ("
         . "commentID INT NOT NULL AUTO_INCREMENT,"
@@ -98,7 +98,7 @@ $createQuery = "CREATE TABLE commentLog ("
         . "rapidRideType INT,"
         . "rapidRideCount INT,"
         . "PRIMARY KEY (commentID))";
-mysqli_query($createQuery);
+mysqli_query($link, $createQuery);
 
 $createQuery = "CREATE TABLE location ("
         . "locationID INT NOT NULL AUTO_INCREMENT,"
@@ -106,20 +106,20 @@ $createQuery = "CREATE TABLE location ("
         . "locationName VARCHAR(64),"
         . "locationUnitCount INT,"
         . "PRIMARY KEY (location))";
-mysqli_query($createQuery);
+mysqli_query($link, $createQuery);
 
 $createQuery = "CREATE TABLE locationTypes ("
         . "locationTypeID INT NOT NULL AUTO_INCREMENT,"
         . "typeName VARCHAR(64),"
         . "responsibleDepartmentID INT,"
         . "PRIMARY KEY (locationTypeID))";
-mysqli_query($createQuery);
+mysqli_query($link, $createQuery);
 
 $createQuery = "CREATE TABLE vehicleLocations ("
         . "vehLocID INT NOT NULL AUTO_INCREMENT,"
         . "vehLocName VARCHAR(64),"
         . "PRIMARY KEY (vehLocID))";
-mysqli_query($createQuery);
+mysqli_query($link, $createQuery);
 
 $createQuery = "CREATE TABLE users ("
         . "userID INT NOT NULL AUTO_INCREMENT,"
@@ -128,14 +128,14 @@ $createQuery = "CREATE TABLE users ("
         . "userHashedPass VARCHAR(256),"
         . "userAccessLevel INT,"
         . "PRIMARY KEY (userID))";
-mysqli_query($createQuery);
+mysqli_query($link, $createQuery);
 
 $createQuery = "CREATE TABLE accessLevels ("
         . "accessID INT NOT NULL AUTO_INCREMENT,"
         . "accessLevelName VARCHAR(64),"
         . "rightsList VARCHAR(240),"
         . "PRIMARY KEY (accessID))";
-mysqli_query($createQuery);
+mysqli_query($link, $createQuery);
 
 
 }
