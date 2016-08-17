@@ -21,6 +21,8 @@ define('WORKINGDIR', str_replace('/config', '', getcwd()));
 include_once WORKINGDIR . "/resource/mysql.init.php";
 
 {
+
+echo "Building Downtimes Table \n";
 $createQuery = "CREATE TABLE downtimes ("
     ."dtID INT UNSIGNED NOT NULL AUTO_INCREMENT,"
     ."timeSig2A DATETIME"
@@ -38,7 +40,12 @@ $createQuery = "CREATE TABLE downtimes ("
     ."downtimeType VARCHAR(12),"
     ."notes VARCHAR(640),"
     . "PRIMARY KEY (dtID))";
+
+echo "Submitting Downtimes Table to Database \n";
+
 mysqli_query($link, $createQuery);
+
+echo "Building First Aid Log Table \n";
 
 $createQuery = "CREATE TABLE firstAidLog ("
         . "firstAidID INT NOT NULL AUTO_INCREMENT,"
@@ -57,7 +64,12 @@ $createQuery = "CREATE TABLE firstAidLog ("
         . "timeCode4 DATETIME,"
         . "notes VARCHAR(640)"
         . "PRIMARY KEY (firstAidID))";
+
+echo "Submitting First Aid Log Table to Database \n";
+
 mysqli_query($link, $createQuery);
+
+echo "Building Security Log Table \n";
 
 $createQuery = "CREATE TABLE securityLog ("
         . "secID INT NOT NULL AUTO_INCREMENT,"
@@ -72,7 +84,12 @@ $createQuery = "CREATE TABLE securityLog ("
         . "disposition VARCHAR(64),"
         . "timeCode4 DATETIME,"
         . "PRIMARY KEY (secID))";
+
+echo "Submitting Security Log Table to Database \n";
+
 mysqli_query($link, $createQuery);
+
+echo "Building Guest Comment Log Table (In Alpha) \n";
 
 $createQuery = "CREATE TABLE commentLog ("
         . "commentID INT NOT NULL AUTO_INCREMENT,"
@@ -98,7 +115,12 @@ $createQuery = "CREATE TABLE commentLog ("
         . "rapidRideType INT,"
         . "rapidRideCount INT,"
         . "PRIMARY KEY (commentID))";
+
+echo "Submitting Comments Table to Database \n";
+
 mysqli_query($link, $createQuery);
+
+echo "Building Locations Table \n";
 
 $createQuery = "CREATE TABLE location ("
         . "locationID INT NOT NULL AUTO_INCREMENT,"
@@ -106,20 +128,35 @@ $createQuery = "CREATE TABLE location ("
         . "locationName VARCHAR(64),"
         . "locationUnitCount INT,"
         . "PRIMARY KEY (location))";
+
+echo "Submitting Locations table to Database \n";
+
 mysqli_query($link, $createQuery);
+
+echo "Building Location Types Repository \n";
 
 $createQuery = "CREATE TABLE locationTypes ("
         . "locationTypeID INT NOT NULL AUTO_INCREMENT,"
         . "typeName VARCHAR(64),"
         . "responsibleDepartmentID INT,"
         . "PRIMARY KEY (locationTypeID))";
+
+echo "Submitting Location Repository to Database \n";
+
 mysqli_query($link, $createQuery);
+
+echo "Creating Vehicle Location Types Repository \n";
 
 $createQuery = "CREATE TABLE vehicleLocations ("
         . "vehLocID INT NOT NULL AUTO_INCREMENT,"
         . "vehLocName VARCHAR(64),"
         . "PRIMARY KEY (vehLocID))";
+
+echo "Submitting Vehicle Location Types Repository \n";
+
 mysqli_query($link, $createQuery);
+
+echo "Building Users Table \n";
 
 $createQuery = "CREATE TABLE users ("
         . "userID INT NOT NULL AUTO_INCREMENT,"
@@ -128,13 +165,21 @@ $createQuery = "CREATE TABLE users ("
         . "userHashedPass VARCHAR(256),"
         . "userAccessLevel INT,"
         . "PRIMARY KEY (userID))";
+
+echo "Submitting Users Table to Database \n";
+
 mysqli_query($link, $createQuery);
+
+echo "Building Access Levels Database \n";
 
 $createQuery = "CREATE TABLE accessLevels ("
         . "accessID INT NOT NULL AUTO_INCREMENT,"
         . "accessLevelName VARCHAR(64),"
         . "rightsList VARCHAR(240),"
         . "PRIMARY KEY (accessID))";
+
+echo "Submitting Access Levels to Database \n";
+
 mysqli_query($link, $createQuery);
 
 
