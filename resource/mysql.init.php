@@ -29,16 +29,16 @@ $_rpdrpMainDB = "ropedrop_main";
 echo getcwd() . "\n";
 echo WORKINGDIR . "\n";
 
-$link = mysqli_connect(
-        $_rpdrpMysqlServer,
-        $_rpdrpMysqlUsername,
-        $_rpdrpMysqlPassword,
-        $_rpdrpMainDB);
+$mainDB = new mysqli($_rpdrpMysqlServer, $_rpdrpMysqlUsername, $_rpdrpMysqlPassword, $_rpdrpMainDB);
+if ($mainDB->connect_errno) {
+	// Connection Failed
+	echo "The Database set up in the configuration file failed to connect: \n";
+	echo "Errno: " . $mainDB->connect_errno . "\n";
+	echo "Errno: " . $mainDB->connect_error . "\n";
 
-if (!$link) {
-        echo "Error: Unable to connect to MySQL. \n";
-        echo "Debugging errno: " . mysqli_connect_errno() . "\n";
-        echo "Debugging error: " . mysqli_connect_error() . "\n";
+	// terminate script here.
+	exit;
 }
-else echo "Link Established \n";
+else echo "Database Link Established \n";
+
 ?>
