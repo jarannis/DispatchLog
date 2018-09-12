@@ -18,16 +18,22 @@
  */
 
 define('WORKINGDIR', str_replace('/config', '', getcwd())); 
-include_once WORKINGDIR . "/config/mysql.conf.php";
+// include_once WORKINGDIR . "/config/mysql.conf.php"; //Excluded for DB Structure Changes.
+
+$_rpdrpMysqlServer = "127.0.0.1";
+$_rpdrpMysqlUsername = "root";
+$_rpdrpMysqlPassword = "Q^xv~3C";
+$_rpdrpMainDB = "ropedrop_main";
+
 
 echo getcwd() . "\n";
 echo WORKINGDIR . "\n";
 
 $link = mysqli_connect(
-        $_mysqlServer,
-        $_mysqlUsername,
-        $_mysqlPassword,
-        $_mysqlDatabase);
+        $_rpdrpMysqlServer,
+        $_rpdrpMysqlUsername,
+        $_rpdrpMysqlPassword,
+        $_rpdrpMainDB);
 
 if (!$link) {
         echo "Error: Unable to connect to MySQL. \n";
