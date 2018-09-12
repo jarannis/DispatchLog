@@ -1,0 +1,61 @@
+General RopeDrop Database (ropedrop.main):
+
+Parks
+PRI_KEY[PARKID]|ParkName|ParkCode|DatabaseName|Address|LicenceExpDateTime|Phone
+
+Users
+PRI_KEY[USERID]|Name|Callsign|Department|Area|RightsLevel|PriInterface
+
+InterfaceTypes
+PRI_KEY[InterfaceID]|InterfaceName|InterfacePage
+
+Rights
+PRI_KEY[RightsLevel]|RightsLevelName|RightsBins:
+	NewGuest,EditGuest,ViewGuest,NewGuestInteraction,EditGuestInteraction,DeleteGuestInteraction,AddGuestRecovery,DeleteGuestRecovery,AddGuestNotes,DeleteGuestNotes,EditGuestNotes,NewRecoveryType,EditRecoveryType,DeleteRecoveryType,
+	NewDowntimeInc,EditDowntimeInc,DelDowntimeInc,NewRide,EditRide,DelRide,NewSecInc,EditSecInc,DelSecInc,NewFirstAidInc,EditFirstAidInc,DelFirstAidInc,NewCount,EditCount,DelCount,AddCalDay,EditCalDay,DelCalDay,AddUnit,EditUnit,DelUnit,AddTSCount,EditTSCount,DelTSCount,AddUserPark,EditUserPark,DelUserPark,AddUserMain,EditUserMain,DelUserMain,EditOwnPassword,EditOtherPassword,EditOwnProfile,EditOtherProfile,AddPark,DelPark,EditPark
+
+
+Park Specific Database (ropedrop.pk34):
+
+Guest DB
+PRI_KEY[GUESTID]|First|Last|Zip|DOB|Pass
+
+Interactions
+PRI_KEY|GUESTID|Posi/Neg|DeptIDs|RecoveryIDs|IncidentIDs|Notes|Satisfied
+
+Recoveries
+PRI_KEY[RECOVERYID]|Type|CountOrAmount
+
+IncidentTracker
+PRI_KEY[INCIDENTID]|Type|ID
+
+IncidentTypes
+PRI_KEY[INCIDENTTYPE]|TypeName|AffectedDepts
+
+Departments
+PRI_KEY[DEPTID]|DepartmentName
+
+Units
+PRI_KEY[UNITID]|Department|Callsign|Name
+
+DowntimeTracker
+PRI_KEY[DOWNTIMEID]|CallTime|DispatchTime|StartStatus|S2ATime|S2Time|S25Performed|S25Time|S4Time|UnitsAck|UnitsResp|Location|VehicleLocations|OpsOnsiteTime|MaintOnsiteTime|DowntimeCause|UnitsCleared
+
+SecurityTracker
+PRI_KEY[SECINCIDENTID]|CallTime|CallType|Location|ReportingUnit|CountPartiesInvolved|DispatchTime|UnitAck|UnitAckTime|UnitOnsite|UnitOnsiteTime|EscortStartTime|EscortDestination|EscortUnits|CallCompleteTime|Disposition
+
+FirstAidTracker
+PRI_KEY[FAINCIDENTID]|CallTime|Location|Severity|RepParty|Notes|DispatchTime|UnitsAck|UnitsResp|UnitAckTime|UnitOnsiteTime|EscortStartTime|AmbRequired|AmbReqTime|AmbEmergent|AmbOnsiteTime|AmbOffsiteTime|Code4Time|Disposition
+
+Calendar
+PRI_KEY[OperatingDay]|HoursType|PrivateBOOL
+
+AttendanceTracker
+PRI_KEY[ATTENTRY]|OperatingDay|Cumm|InPark|Temp|Weather
+
+RideTurnstileTracker
+PRI_KEY[RTENTRY]|OPDAY|Ride|Hour|Count
+
+RideInfo
+PRI_KEY[RIDEID]|Name|Manufacturer|Trains|Seats|Locations
+
