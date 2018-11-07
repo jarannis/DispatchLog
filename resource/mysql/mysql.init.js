@@ -9,5 +9,5 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
 	if (err) throw err;
-	console.log("Connected to Mysql database: " . options.host);
+	console.log("Connected to Mysql database");
 })
