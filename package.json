@@ -1,0 +1,24 @@
+{
+  "name": "ropedrop",
+  "version": "0.0.1",
+  "description": "Rapid OPerational and Emergency Dispatching, Reporting, and Optimization Program",
+  "main": "index.js",
+  "dependencies": {
+    "express-mysql-session": "^2.0.1",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jarannis/ropedrop.git"
+  },
+  "author": "Christian Barnes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jarannis/ropedrop/issues"
+  },
+  "homepage": "https://github.com/jarannis/ropedrop#readme"
+}
