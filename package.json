@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "express-mysql-session": "^2.0.1",
+    "express-session": "^1.15.6",
     "mysql": "^2.16.0"
   },
   "devDependencies": {},
