@@ -1,9 +1,9 @@
 var mysql = require('mysql');
 var options = {
-	host: 'localhost';
-	user: 'ropedrop';
-	password: 'aJ2fZx5Idih9KzFt';
-	database: 'ropedrop';
+	host: 'localhost',
+	user: 'ropedrop',
+	password: 'aJ2fZx5Idih9KzFt',
+	database: 'ropedrop'
 };
 
 var con = mysql.createConnection(options);
