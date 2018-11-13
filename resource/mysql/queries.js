@@ -16,5 +16,19 @@ module.exports = {
 				if (err) throw err;
 				return callback(rows);
 			})
+		},
+		guestSearchLive : function(conn, search, callback){
+			console.log("loaded GuestSearch");
+			search = search + "%";
+			search = mysql.escape(search);
+			var query = "SELECT `firstname`,`lastname`,`zipcode`,`seasonpass` FROM `guests` WHERE `firstname` LIKE " + 
+			search + 
+			" OR `lastname` LIKE " + search + 
+			" OR `seasonpass` LIKE " + search +
+			" ORDER BY `firstname` ASC, `lastname` ASC";
+			conn.query(query, function(err, rows, fields){
+				if (err) throw err;
+				return callback(rows);
+			})
 		}
 }
