@@ -7,30 +7,35 @@ Sessions expire after 24 hours, and a new session code must be generated.
 */
 // we start by loading mysql for any other resources that may need it
 var mysql = require('mysql');
+// connect to main RopeDrop database
 var con = mysql.createConnection({
 	host: "localhost",
 	user: "ropedrop",
 	password: "aJ2fZx5Idih9KzFt",
 	database: "ropedrop"
 });
+// check connection to main RopeDrop database
 con.connect(function(err) {
 	if (err) console.log(err);
 	console.log("Connected to RopeDrop Main Database");
 });
 
 // Build array to store park information for quicker reading later.
-//var parks[];
 
+// Session Start Section
 console.log("Preparing Socket for connection to React-UI");
 
 // the following contains all the database queries in handy function formats
 var queries = require('./resource/mysql/queries.js');
+// get version information from database and echo to console
 var mainversion = queries.versionQuery("mainversion", con, function(result){
 	console.log(result);
 });
 var dbversion = queries.versionQuery("databaseversion", con, function(result){
 	console.log(result);
 });
+
+// select all parks and display data about each active park
 console.log("Available Parks:");
 var parksquery = queries.parksQuery(con, function(result){
 	result.forEach(function(row) {
@@ -42,32 +47,36 @@ var parksquery = queries.parksQuery(con, function(result){
 			row.DatabaseName);
 	}
 )});
+
+// Hardcoded connect to park 34, Elitch Gardens
 var parkCon = mysql.createConnection({
 	host: "localhost",
 	user: "ropedrop",
 	password: "aJ2fZx5Idih9KzFt",
 	database: "ropedrop.34"
 });
+// Check Park 34 database connection
 con.connect(function(err) {
 	if (err) console.log(err);
 	console.log("connected to Park Database 34");
 });
-
-var guestsearch = queries.guestSearchLive(parkCon, "3401", function(result){
-	result.forEach(function(row) {
-		console.log(
-			row.firstname +
-			" " +
-			row.lastname +
-			" " +
-			row.zipcode +
-			" " +
-			row.seasonpass);
-	}
-)});
+/* This search is a hard-coded search through the "guests" database for a specific query.
+** Use this example for parsing future queries
+** var guestsearch = queries.guestSearchLive(parkCon, "3401", function(result){
+** 	result.forEach(function(row) {
+**		console.log(
+**			row.firstname +
+**			" " +
+**			row.lastname +
+**			" " +
+**			row.zipcode +
+**			" " +
+**			row.seasonpass);
+**	}
+** )});
+*/
 
 // async guest search function 
-
 const readline = require('readline');
 const rl = readline.createInterface(process.stdin, process.stdout);
 
@@ -91,15 +100,15 @@ promptInput('query> ', input =>
 	console.log(input);
 	var action = input.slice(0,1);
 	var data = input.slice(2);
-	console.log("Split Action: " + action);
-	console.log("Split Data:" + data);
+	// console.log("Split Action: " + action);
+	// console.log("Split Data:" + data);
     switch (action) {
     	case "P":
-    		console.log(input.startsWith("P"));
+    		// console.log(input.startsWith("P"));
     		break;
-    		console.log("Still Running");
+    		// console.log("Still Running");
         case "G":
-        	console.log("Query accepted: " + data);
+        	// console.log("Query accepted: " + data);
             var guestCmdSearch = queries.guestSearchLive(parkCon, data, function(result){
             	result.forEach(function(row){
             		console.log(
@@ -114,6 +123,21 @@ promptInput('query> ', input =>
             )});
             input == null;
             break;
+        case "I":
+        	var searchby = data.slice (0,1);
+        	data = data.slice (1);
+        	var interactSearch = queries.interactionSearch(parkCon, data, searchby, function(result){
+        		result.forEach(function(row){
+        			console.log(
+        				row.interactID +
+        				" " +
+        				row.satisfied +
+        				" " +
+        				row.followup +
+        				" " +
+        				row.guestname);
+        		})
+        	})
         case 'exit':
             console.log('Bye!');
             return false;

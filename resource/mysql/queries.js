@@ -29,6 +29,35 @@ module.exports = {
 			conn.query(query, function(err, rows, fields){
 				if (err) throw err;
 				return callback(rows);
-			})
+			});
+		},
+		interactionSearch : function(conn, search, by, callback){
+			search = mysql.escape(search);
+			console.log("Passed Data: Search By (" + by +") terms (" + search + ")");
+			query = "SELECT interactions.`interactID`, interactions.`satisfied`, interactions.`followup`, "
+			+ "CONCAT(guests.firstname,' ',guests.lastname) AS guestname FROM interactions JOIN `guests` ON interactions.guestID=guests.guestID WHERE ";
+			console.log()
+			switch (by){
+				case "G":
+					query = query + "`interactions`.`guestID` = " + search;
+				break;
+
+				case "A":
+					console.log("Insert Department ID Query into queries.js line 45");
+				break;
+
+				case "D":
+
+				break;
+
+				case "F":
+					query = query + "`followup` != \"No\"" + search;
+				break;
+			}
+			console.log("final query: " + query);
+			conn.query(query,function(err,rows,fields){
+				if(err) throw err;
+				return callback(rows);
+			});
 		}
 }
