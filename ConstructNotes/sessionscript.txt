@@ -1,1 +1,10 @@
-sessionscript.txt
+// Session Management and Login Rough Draft Pseudocode
+
+Navigate -> ropedrop.io (./ropedrop-ui/index.js)
+index.js - Connect to Session socket 31415
+sessionserver.js - Accept Session, return session database status
+index.js - 401 OK, collect session cookie from browser and send checksession(cookie.sessioncode, cookie.username)
+sessionserver.js - Accept Cookie, check session code against associated userID, reset timeout timestamp if valid, return valid.
+sessionserver.js - hold-open socket until timeout expire, unless page navigated, then update timeout.
+index.js - connect to Database socket 31416 for parkcode from cookie.parkcode
+

@@ -7,6 +7,40 @@ Sessions expire after 24 hours, and a new session code must be generated.
 */
 // we start by loading mysql for any other resources that may need it
 var mysql = require('mysql');
+// app uses Express for login
+var express = require("express");
+// path to loginroutes for the express router
+var login = require('./resource/loginroutes.js');
+// parses body contents of socket connections
+var bodyParser = require('body-parser');
+// initializes express
+var app = express();
+// set URL encoded routing to TRUE for extended url encoding support
+app.use(bodyParser.urlencoded({ extended: true}));
+// set the express app to use JSON body parsing for payloads
+app.use(bodyParser.json());
+
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+})
+
+// initialize the express router as router
+var router = express.Router();
+
+// test the route to ensure it works. Change this to suit the application once completed
+router.get('/', function(req, res) {
+	res.json({ message: 'welcome to our upload module apis'});
+});
+
+router.post('/register',login.register);
+router.post('/login',login.login);
+app.use('/api', router);
+app.listen(31415);
+
+
+
 // connect to main RopeDrop database
 var con = mysql.createConnection({
 	host: "localhost",

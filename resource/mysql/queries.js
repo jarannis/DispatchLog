@@ -59,5 +59,10 @@ module.exports = {
 				if(err) throw err;
 				return callback(rows);
 			});
+		},
+		passwordReset : function(conn, username, newpass, callback){
+			username = mysql.escape(username);
+			password = mysql.escape(password);
+
 		}
 }
