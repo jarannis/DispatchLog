@@ -1,4 +1,20 @@
 // loginroutes.js
+// load crypto for salt and password hash generation
+var crypto = require('crypto');
+
+// create salt generating algorythm based on crypto
+var genRandomString = function(length){
+	return crypto.randomBytes(Math.ceil(length/2)).toString('hex').slice(0,length);
+};
+var sha512 = function(password, salt){
+	var hash = crypto.createHmac('sha512', salt);
+	hash.update(password);
+	var value = hash.digest('hex');
+	return{
+		salt:salt,
+		passwordHash:value
+	};
+};
 
 // load mysql connection for the RopeDrop main database
 var mysql = require('mysql');
@@ -23,6 +39,9 @@ exports.register = function(req,res){
 	//console.log("req",req.body);
 	var today = new Date();
 	var fullname = req.body.first_name + " " + req.body.last_name;
+	var userSalt = genRandomString(16);
+	var passwordData = sha512(req.body.password, userSalt);
+
 	var users={
 		"name":fullname,
 		"callsign":req.body.callsign,
@@ -30,7 +49,8 @@ exports.register = function(req,res){
 		"areaCode":req.body.areaCode,
 		"emailAddress":req.body.emailAddress,
 		"username":req.body.username,
-		"passcode":req.body.password
+		"salt":passwordData.salt,
+		"passcode":passwordData.passwordHash
 	}
 	connection.query('INSERT INTO users SET ?',users, function (error, results, fields) {
 		if(error) {
@@ -51,9 +71,9 @@ exports.register = function(req,res){
 }
 
 exports.login = function(req,res){
-	var email= req.body.email;
+	var username = req.body.username;
 	var password = req.body.password;
-	connection.query('SELECT * FROM users WHERE emailAddress =?',[email], function(error, results, fields) {
+	connection.query('SELECT * FROM users WHERE username =?',[username], function(error, results, fields) {
 		if(error){
 			console.log("Mysql returned error: ",error);
 			res.send({
@@ -62,9 +82,12 @@ exports.login = function(req,res){
 			});
 		}
 		else {
+			var userSalt = results[0].salt;
+			var passwordData = sha512(password, userSalt);
+
 			// console.log ("Mysql returned results for a user login query: ",results);
 			if(results.length >0){
-				if(results[0].passcode == password){
+				if(results[0].passcode == passwordData.passwordHash){
 					res.send({
 						"code":200,
 						"success":"login successfull"
@@ -73,14 +96,14 @@ exports.login = function(req,res){
 				else{
 					res.send({
 						"code":204,
-						"success":"Email and Password do not match"
+						"success":"Username and Password do not match"
 					});
 				}
 			}
 			else{
 				res.send({
 					"code":204,
-					"success":"Email is not attached to a registered user"
+					"success":"Username is not attached to a registered user"
 				});
 			}
 		}

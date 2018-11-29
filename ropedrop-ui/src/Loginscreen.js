@@ -41,9 +41,10 @@ class Loginscreen extends Component {
   }
   handleClick(event){
     // console.log("event",event);
+    var loginscreen=[];
     var loginmessage;
     if(this.state.isLogin){
-      var loginscreen=[];
+      loginscreen=[];
       loginscreen.push(<Register parentContext={this}/>);
       loginmessage = "Already registered.Go to Login";
       this.setState({
@@ -54,7 +55,7 @@ class Loginscreen extends Component {
                    })
     }
     else{
-      var loginscreen=[];
+      loginscreen=[];
       loginscreen.push(<Login parentContext={this}/>);
       loginmessage = "Not Registered yet.Go to registration";
       this.setState({

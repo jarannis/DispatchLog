@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
+// import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
@@ -19,9 +19,6 @@ class Login extends Component {
 	      <div>
 	        <MuiThemeProvider>
 	          <div>
-	          <AppBar
-	             title="Login"
-	           />
 	           <TextField
 	             hintText="Enter your Username"
 	             floatingLabelText="Username"
@@ -44,7 +41,7 @@ class Login extends Component {
 	handleClick(event){
 		var self = this;
 		var payload={
-			"email":this.state.username,
+			"username":this.state.username,
 			"password":this.state.password
 		}
 		axios.post(apiBaseUrl+'login', payload)
