@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 // import Theme from './Theme';
 import './App.css';
-import Loginscreen from './Loginscreen';
 //injectTapEventPlugin();
 import { createMuiTheme } from '@material-ui/core/styles';
 import indigo from '@material-ui/core/colors/indigo';
@@ -23,24 +22,17 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      loginPage:[],
-      uploadScreen:[]
+      curPage: "home",
     }
   }
   componentWillMount(){
-    var loginPage =[];
-    loginPage.push(<Loginscreen parentContext={this}/>);
-    this.setState({
-                  loginPage:loginPage
-                    })
+
   }
   render() {
     var AppBar = MenuBar.ButtonAppBar;
     return (
       <div className="App">
-        <MenuBar />
-        {this.state.loginPage}
-        {this.state.uploadScreen}
+        <MenuBar curPage={this.state.curPage} />
       </div>
     );
   }

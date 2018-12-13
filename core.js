@@ -11,19 +11,37 @@ var mysql = require('mysql');
 var express = require("express");
 // path to loginroutes for the express router
 var login = require('./resource/loginroutes.js');
+var guestsearch = require('./resource/guestsearchroutes.js');
 // parses body contents of socket connections
 var bodyParser = require('body-parser');
 // initializes express
 var app = express();
+
+//var cors = require('cors');
+//var corsOptions = {
+//    origin: 'http://localhost:3000',
+//    optionsSuccessStatus: 200
+//}
+
+//app.use(cors())
+
+
 // set URL encoded routing to TRUE for extended url encoding support
 app.use(bodyParser.urlencoded({ extended: true}));
 // set the express app to use JSON body parsing for payloads
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
+	res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+    if('OPTIONS' == req.method) {
+        res.sendStatus(200);
+    }
+    else{
 	next();
+}
 })
 
 // initialize the express router as router
@@ -36,6 +54,8 @@ router.get('/', function(req, res) {
 
 router.post('/register',login.register);
 router.post('/login',login.login);
+router.post('/guestsearch',guestsearch.guestSearch);
+router.post('')
 app.use('/api', router);
 app.listen(31415);
 

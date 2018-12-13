@@ -12,34 +12,10 @@ import LockOpenIcon from '@material-ui/icons/LockOpen';
 
 export const mainListItems = (
 	<div>
-		<ListItem button>
-			<ListItemIcon>
-				<HomeIcon />
-			</ListItemIcon>
-			<ListItemText primary="Home" />
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<PeopleIcon />
-			</ListItemIcon>
-			<ListItemText primary="Search Guests" />
-		</ListItem>
-		<ListItem button>
-			<ListItemIcon>
-				<ShoppingCartIcon />
-			</ListItemIcon>
-			<ListItemText primary="Search Recoveries" />
-		</ListItem>
 	</div>
 )
 
 export const secondaryListItems = (
 	<div>
-		<ListItem button>
-			<ListItemIcon>
-				<LockOpenIcon />
-			</ListItemIcon>
-			<ListItemText primary="Log Out" />
-		</ListItem>
 	</div>
 )
